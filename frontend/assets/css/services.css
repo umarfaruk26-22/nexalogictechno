@@ -138,6 +138,14 @@
 /* -------------------------------------
    2.5 Circular Services Layout
 ------------------------------------- */
+.services-circle-stage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
 .services-circle-wrapper {
     position: relative;
     width: 100%;
@@ -263,53 +271,171 @@
 }
 
 @media (max-width: 768px) {
-    .services-circle-wrapper { max-width: 700px; height: 750px; margin: 30px auto; }
-    .services-circle { width: 450px; height: 450px; }
-    .circle-item { --radius: 225px; width: 180px; }
-    .circle-item .service-card-img { height: 80px; }
-    .circle-item .service-card-content { padding: 15px; }
-    .circle-item .service-card-content h3 { font-size: 1rem; }
-    .circle-item .service-card-content p { display: none; } /* Hide text on small screens */
-    .services-circle-center-text { width: 200px; padding: 20px; }
-    .services-circle-center-text h3 { font-size: 1.5rem; margin-bottom: 5px; }
-    .services-circle-center-text p { font-size: 0.9rem; }
+    #services-listing {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    .services-circle-stage {
+        width: 100%;
+        max-width: 100vw;
+        height: 520px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin: 20px auto;
+    }
+
+    .services-circle-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(calc((min(100vw, 480px) - 24px) / 640));
+        transform-origin: center center;
+        width: 640px !important;
+        height: 640px !important;
+        max-width: none !important;
+        margin: 0 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    /* Pause rotation on touch/hover so users can easily tap */
+    .services-circle-wrapper:hover .services-circle,
+    .services-circle-wrapper:hover .circle-item .service-card,
+    .services-circle-wrapper:active .services-circle,
+    .services-circle-wrapper:active .circle-item .service-card {
+        animation-play-state: paused;
+    }
+
+    .services-circle {
+        position: relative !important;
+        width: 440px !important;
+        height: 440px !important;
+        border-radius: 50% !important;
+        border: 2px dashed rgba(13, 110, 253, 0.3) !important;
+        animation: rotateCircle 60s linear infinite !important;
+        display: block !important;
+    }
+
+    .circle-item {
+        --radius: 220px !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        width: 175px !important;
+        transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(-1 * var(--radius))) !important;
+        display: block !important;
+    }
+
+    .circle-item::before {
+        content: '' !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        width: 2px !important;
+        height: var(--radius) !important;
+        background: linear-gradient(to bottom, rgba(13, 110, 253, 0.4), transparent) !important;
+        transform: translateX(-50%) !important;
+        z-index: -1 !important;
+        pointer-events: none !important;
+        display: block !important;
+    }
+
+    .circle-item .service-card {
+        transform: rotate(calc(-1 * var(--angle))) !important;
+        animation: counterRotate 60s linear infinite !important;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.12) !important;
+        background: var(--white) !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+    }
+
+    .circle-item .service-card-img,
+    .circle-item .service-card-img-placeholder {
+        height: 85px !important;
+        width: 100% !important;
+        object-fit: cover !important;
+    }
+
+    .circle-item .service-card-content {
+        padding: 12px 10px !important;
+        text-align: center !important;
+    }
+
+    .circle-item .service-card-content h3 {
+        font-size: 0.95rem !important;
+        margin-bottom: 6px !important;
+        line-height: 1.2 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+
+    .circle-item .service-card-content p {
+        display: none !important;
+    }
+
+    .circle-item .details-button {
+        font-size: 0.8rem !important;
+        padding: 5px 12px !important;
+        display: inline-flex !important;
+        border-radius: 20px !important;
+    }
+
+    .services-circle-center-text {
+        position: absolute !important;
+        width: 190px !important;
+        height: 190px !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        padding: 20px !important;
+        border-radius: 50% !important;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        z-index: 10 !important;
+        border: 1px solid rgba(13, 110, 253, 0.1) !important;
+    }
+
+    .services-circle-center-text h3 {
+        font-size: 1.35rem !important;
+        margin-bottom: 4px !important;
+        color: var(--dark-blue) !important;
+    }
+
+    .services-circle-center-text p {
+        font-size: 0.8rem !important;
+        line-height: 1.3 !important;
+        margin: 0 !important;
+        color: var(--grey-medium) !important;
+    }
 }
 
-@media (max-width: 576px) {
-    /* Fallback to normal grid for very small screens */
-    .services-circle-wrapper { 
-        display: grid;
-        grid-template-columns: 1fr;
-        height: auto;
-        border: none;
-        animation: none;
-        gap: 30px;
+@media (max-width: 480px) {
+    .services-circle-stage {
+        height: 480px;
     }
-    .services-circle-center-text {
-        position: relative;
-        width: 100%;
-        border-radius: 8px;
-        box-shadow: none;
-        padding: 20px 0;
-        background: transparent;
+
+    .services-circle-wrapper {
+        transform: translate(-50%, -50%) scale(calc((100vw - 16px) / 640));
     }
-    .services-circle {
-        display: contents; /* Flattens the circle container */
+}
+
+@media (max-width: 360px) {
+    .services-circle-stage {
+        height: 430px;
     }
-    .circle-item {
-        position: relative;
-        top: auto; left: auto;
-        transform: none !important;
-        width: 100%;
+
+    .services-circle-wrapper {
+        transform: translate(-50%, -50%) scale(calc((100vw - 12px) / 640));
     }
-    .circle-item::before {
-        display: none;
-    }
-    .circle-item .service-card {
-        transform: none !important;
-        animation: none !important;
-    }
-    .circle-item .service-card-content p { display: -webkit-box; } /* Show text again */
 }
 
 .service-card {
