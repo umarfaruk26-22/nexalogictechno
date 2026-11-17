@@ -594,7 +594,7 @@ DEFAULT_COMPANY_SETTINGS = {
     "email": "info@nexalogicit.com",
     "phone": "+1 (555) 019-2834",
     "address": "Tech Square Tower 4, Suite 800, Silicon Valley, CA",
-    "logo_path": "/assets/images/logo.png",
+    "logo_path": "/assets/images/nexalogic%20-15.svg",
 }
 
 
@@ -633,7 +633,7 @@ async def update_company_settings(
 
     if logo and logo.filename:
         ext = os.path.splitext(logo.filename)[1].lower()
-        if ext not in {".jpg", ".jpeg", ".png", ".webp", ".gif"}:
+        if ext not in {".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg"}:
             raise HTTPException(status_code=400, detail="Invalid logo format")
         filename = f"logo{ext}"
         filepath = os.path.join(LOGO_UPLOAD_DIR, filename)
