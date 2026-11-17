@@ -594,7 +594,7 @@ DEFAULT_COMPANY_SETTINGS = {
     "email": "info@nexalogicit.com",
     "phone": "+1 (555) 019-2834",
     "address": "Tech Square Tower 4, Suite 800, Silicon Valley, CA",
-    "logo_path": "/assets/images/nexalogic%20-15.svg",
+    "logo_path": "assets/images/nexalogic%20header%20svg.svg",
 }
 
 
