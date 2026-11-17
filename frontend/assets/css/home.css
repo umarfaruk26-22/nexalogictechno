@@ -1,0 +1,592 @@
+/* Home Page Specific Styles (home.css) */
+
+/* -------------------------------------
+   1. Company Introduction Section
+------------------------------------- */
+#company-intro {
+    background-color: var(--white);
+    position: relative;
+}
+
+#company-intro .section-header {
+    max-width: 800px;
+}
+
+#company-intro .section-header h2 {
+    font-size: 2.75rem;
+    color: var(--dark-blue);
+}
+
+#company-intro .section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-blue);
+    border-radius: 2px;
+}
+
+#company-intro .section-header p {
+    font-size: 1.2rem;
+    color: var(--grey-medium);
+    margin-top: 30px;
+    line-height: 1.8;
+}
+
+/* Subtle entrance animation utility for scroll (to be triggered via JS or static fade) */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition-smooth);
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* -------------------------------------
+   2. Our Process Section
+------------------------------------- */
+.bg-light {
+    background-color: var(--grey-light);
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.process-step {
+    position: relative;
+    padding-top: 40px; /* Space for the step number */
+    text-align: left;
+    border-top: 4px solid transparent;
+}
+
+.process-step:hover {
+    border-top-color: var(--primary-blue);
+}
+
+.step-number {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 4rem;
+    font-weight: 800;
+    color: rgba(13, 110, 253, 0.08); /* Faint primary blue */
+    font-family: var(--font-heading);
+    transition: var(--transition-smooth);
+}
+
+.process-step:hover .step-number {
+    color: rgba(13, 110, 253, 0.2);
+    transform: translateY(-10px);
+}
+
+.process-step h3 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    color: var(--dark-blue);
+    position: relative;
+    z-index: 2;
+}
+
+.process-step p {
+    color: var(--grey-medium);
+    font-size: 1rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+/* Responsive Process Layout */
+@media (max-width: 992px) {
+    .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .process-steps {
+        grid-template-columns: 1fr;
+    }
+    .process-step {
+        text-align: center;
+    }
+    .step-number {
+        right: 50%;
+        transform: translateX(50%);
+    }
+    .process-step:hover .step-number {
+        transform: translate(50%, -10px);
+    }
+}
+
+/* -------------------------------------
+   3. Industries We Serve Section
+------------------------------------- */
+.industries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.industry-card {
+    background-color: var(--white);
+    border: 1px solid var(--grey-light);
+    border-radius: var(--border-radius);
+    padding: 40px 30px;
+    text-align: center;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.industry-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-medium);
+    border-color: rgba(13, 110, 253, 0.2);
+}
+
+.industry-icon {
+    font-size: 3rem;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+    transition: var(--transition-smooth);
+    display: inline-block;
+}
+
+.industry-card:hover .industry-icon {
+    transform: scale(1.1);
+}
+
+.industry-card h3 {
+    font-size: 1.25rem;
+    color: var(--dark-blue);
+    margin-bottom: 15px;
+}
+
+.industry-card p {
+    color: var(--grey-medium);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Responsive Industries Layout */
+@media (max-width: 992px) {
+    .industries-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .industries-grid {
+        grid-template-columns: 1fr;
+    }
+    .industry-card {
+        padding: 30px 20px;
+    }
+}
+
+/* -------------------------------------
+   4. Featured Services Section
+------------------------------------- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0; /* Padding handled internally */
+    overflow: hidden;
+}
+
+.service-card-body {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card h3 {
+    font-size: 1.4rem;
+    color: var(--dark-blue);
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    color: var(--grey-medium);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.details-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary-blue);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+    margin-top: auto;
+}
+
+.details-link span {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.details-link:hover {
+    color: var(--secondary-blue);
+}
+
+.details-link:hover span {
+    transform: translateX(5px);
+}
+
+/* Responsive Services Layout */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* -------------------------------------
+   5. Why Choose Us Section
+------------------------------------- */
+.why-choose-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.why-choose-text h2 {
+    margin-bottom: 20px;
+}
+.why-choose-text h2::after {
+    left: 0;
+    transform: translateX(0); /* Left align underline */
+}
+
+.why-choose-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.why-choose-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid var(--grey-light);
+    transition: var(--transition-smooth);
+}
+
+.why-choose-list li:hover {
+    transform: translateX(10px);
+    border-color: rgba(13, 110, 253, 0.3);
+    box-shadow: var(--shadow-medium);
+}
+
+.list-icon {
+    background-color: rgba(13, 110, 253, 0.1);
+    color: var(--primary-blue);
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.list-content strong {
+    display: block;
+    font-size: 1.15rem;
+    color: var(--dark-blue);
+    margin-bottom: 5px;
+    font-family: var(--font-heading);
+}
+
+.list-content span {
+    color: var(--grey-medium);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Responsive Why Choose Us Layout */
+@media (max-width: 992px) {
+    .why-choose-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .why-choose-text h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .why-choose-text {
+        text-align: center !important;
+    }
+}
+
+/* -------------------------------------
+   6. Statistics Section
+------------------------------------- */
+#statistics {
+    background-color: var(--dark-blue); /* Dark background */
+    color: var(--white);
+    text-align: center;
+}
+
+.stats-header h2 {
+    color: var(--white);
+}
+
+.stats-header p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.stat-item {
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    background-color: rgba(255, 255, 255, 0.02);
+    transition: var(--transition-smooth);
+}
+
+.stat-item:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-blue);
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+.stat-number {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+    font-family: var(--font-heading);
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.5px;
+}
+
+/* Responsive Statistics Layout */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* -------------------------------------
+   7. Testimonials Section
+------------------------------------- */
+.testimonials-slider-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.testimonials-slider-container {
+    position: relative;
+    overflow: hidden;
+    min-height: 250px;
+}
+
+.testimonial-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    text-align: center;
+    visibility: hidden;
+}
+
+.testimonial-slide.active-testi {
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
+    position: relative;
+}
+
+.quote-icon {
+    font-size: 4rem;
+    color: rgba(13, 110, 253, 0.2);
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.testimonial-slide blockquote {
+    margin: 0;
+}
+
+.testimonial-slide blockquote p {
+    font-size: 1.5rem;
+    color: var(--dark-blue);
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.testimonial-slide cite {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-style: normal;
+}
+
+.testimonial-slide cite strong {
+    font-size: 1.2rem;
+    color: var(--dark-blue);
+    margin-bottom: 5px;
+}
+
+.testimonial-slide cite span {
+    font-size: 0.95rem;
+    color: var(--grey-medium);
+}
+
+.testimonial-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.t-dot {
+    width: 12px;
+    height: 12px;
+    background-color: var(--grey-medium);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.t-dot.active {
+    background-color: var(--primary-blue);
+    width: 30px;
+    border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+    .testimonial-slide blockquote p {
+        font-size: 1.2rem;
+    }
+}
+
+/* -------------------------------------
+   8. Call To Action (CTA) Section
+------------------------------------- */
+#cta-contact {
+    background-color: var(--primary-blue);
+    background-image: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    color: var(--white);
+    text-align: center;
+    border-radius: 0;
+}
+
+.cta-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 60px;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cta-content {
+    text-align: left;
+    max-width: 600px;
+}
+
+.cta-content h2 {
+    color: var(--white);
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.cta-content p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.cta-action {
+    flex-shrink: 0;
+    margin-left: 40px;
+}
+
+.btn-large {
+    padding: 18px 40px;
+    font-size: 1.1rem;
+    background-color: var(--white);
+    color: var(--primary-blue);
+}
+
+.btn-large:hover {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Responsive CTA */
+@media (max-width: 992px) {
+    .cta-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+    .cta-content {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .cta-action {
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>NexaLogic IT Solution | Admin Login</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+</head>
+<body class="admin-login-body">
+
+    <!-- Main Container -->
+    <main id="login-container">
+        
+        <!-- Logo and Brand header -->
+        <header class="login-header">
+            <a href="index.html">
+                <img src="assets/images/white%20logo.png" alt="NexaLogic IT Solution Logo" class="login-logo">
+            </a>
+            <h1>Admin Control Portal</h1>
+            <p>Access restricted to authorized personnel only.</p>
+        </header>
+
+        <!-- Login Credentials Form Box -->
+        <section class="login-card-section card-premium">
+            <form id="admin-login-form" class="custom-form">
+                
+                <div class="form-group">
+                    <label for="admin-username">Username:</label>
+                    <input type="text" id="admin-username" class="form-control" name="username" required autocomplete="username" placeholder="Enter admin username">
+                </div>
+
+                <div class="form-group">
+                    <label for="admin-password">Password:</label>
+                    <input type="password" id="admin-password" class="form-control" name="password" required autocomplete="current-password" placeholder="Enter password">
+                </div>
+
+                <button type="submit" id="login-submit-btn" class="btn-primary">Authenticate</button>
+            </form>
+
+            <div id="login-feedback-message" aria-live="polite"></div>
+        </section>
+
+        <!-- Security Notice / Back Links -->
+        <footer class="login-footer">
+            <p class="warning-text">All access attempts are logged for system audit and security validation purposes.</p>
+            <p><a href="index.html">Return to Public Homepage</a></p>
+        </footer>
+
+    </main>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/admin.js"></script>
+</body>
+</html>

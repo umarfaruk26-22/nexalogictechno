@@ -1,0 +1,203 @@
+/* Contact Page Specific Styles (contact.css) */
+
+/* -------------------------------------
+   1. Contact Layout Grid
+------------------------------------- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+}
+
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* -------------------------------------
+   2. Contact Form
+------------------------------------- */
+.contact-form-container {
+    padding: 40px;
+    background-color: var(--white);
+}
+
+.contact-form-container h2 {
+    font-size: 2rem;
+    color: var(--dark-blue);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--grey-light);
+}
+
+.custom-form .form-group {
+    margin-bottom: 25px;
+}
+
+.custom-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--dark-blue);
+}
+
+.custom-form .form-control {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--grey-light);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    color: var(--grey-medium);
+    transition: var(--transition-smooth);
+    background-color: #fafafa;
+}
+
+.custom-form .form-control:focus {
+    outline: none;
+    background-color: var(--white);
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.1);
+}
+
+.submit-btn-large {
+    width: 100%;
+    padding: 16px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border-radius: 8px;
+    margin-top: 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 20px rgba(13, 110, 253, 0.2);
+    transition: all 0.3s ease;
+}
+
+.submit-btn-large:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(13, 110, 253, 0.3);
+}
+
+/* -------------------------------------
+   3. Info Blocks & Sidebar
+------------------------------------- */
+.contact-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info-block {
+    padding: 30px;
+    background-color: var(--white);
+}
+
+.info-block h2 {
+    font-size: 1.5rem;
+    color: var(--dark-blue);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.info-block h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--primary-blue);
+}
+
+.contact-address, .working-hours-list, .social-links-list {
+    color: var(--grey-medium);
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.contact-address a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-address a:hover {
+    text-decoration: underline;
+}
+
+.working-hours-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.working-hours-list li {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--grey-light);
+    padding: 10px 0;
+}
+
+.working-hours-list li:last-child {
+    border-bottom: none;
+}
+
+.working-hours-list li span {
+    font-weight: 600;
+    color: var(--dark-blue);
+}
+
+/* Social Links */
+.social-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.social-links-list li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 10px 20px;
+    background-color: rgba(13, 110, 253, 0.05);
+    color: var(--primary-blue);
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+}
+
+.social-links-list li a:hover {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* -------------------------------------
+   4. Google Map Edge-to-Edge
+------------------------------------- */
+#google-map-section {
+    width: 100%;
+    line-height: 0; /* Remove bottom gap */
+}
+
+.map-wrapper {
+    position: relative;
+    padding-bottom: 0;
+}
+
+.full-width-map {
+    width: 100%;
+    height: 500px;
+    filter: grayscale(100%) contrast(1.2); /* Corporate styling for the map */
+    transition: filter 0.5s ease;
+}
+
+.full-width-map:hover {
+    filter: none;
+}
