@@ -7,17 +7,83 @@ const API_BASE_URL = window.location.origin.includes('localhost') || window.loca
 
 document.addEventListener('DOMContentLoaded', () => {
     /* -------------------------------------
-       1. Mobile Navigation Toggle
+       1. Mobile Navigation Toggle & Left Drawer
     ------------------------------------- */
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.getElementById('nav-menu');
 
+    // Create backdrop if not already present
+    let backdrop = document.querySelector('.nav-backdrop');
+    if (!backdrop) {
+        backdrop = document.createElement('div');
+        backdrop.className = 'nav-backdrop';
+        document.body.appendChild(backdrop);
+    }
+
+    // Add drawer header with logo and close button inside navMenu if not already present
+    if (navMenu && !navMenu.querySelector('.drawer-header-item')) {
+        const headerItem = document.createElement('li');
+        headerItem.className = 'drawer-header-item';
+        headerItem.innerHTML = `
+            <a href="index.html" class="drawer-logo-link">
+                <img src="assets/images/nexalogic%20-15.svg" alt="NexaLogic IT Solution Logo" class="drawer-logo">
+            </a>
+            <button type="button" class="drawer-close-btn" aria-label="Close Menu">&times;</button>
+        `;
+        navMenu.insertBefore(headerItem, navMenu.firstChild);
+    }
+
+    function closeNav() {
+        if (menuToggle && navMenu) {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            navMenu.classList.remove('open');
+            menuToggle.classList.remove('open');
+            if (backdrop) backdrop.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    }
+
+    function openNav() {
+        if (menuToggle && navMenu) {
+            menuToggle.setAttribute('aria-expanded', 'true');
+            navMenu.classList.add('open');
+            menuToggle.classList.add('open');
+            if (backdrop) backdrop.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
     if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', () => {
-            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-            menuToggle.setAttribute('aria-expanded', !isExpanded);
-            navMenu.classList.toggle('open');
-            menuToggle.classList.toggle('open');
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (navMenu.classList.contains('open')) {
+                closeNav();
+            } else {
+                openNav();
+            }
+        });
+
+        if (backdrop) {
+            backdrop.addEventListener('click', closeNav);
+        }
+
+        // Close on clicking any navigation link
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                closeNav();
+            });
+        });
+
+        // Close on drawer close button
+        navMenu.querySelectorAll('.drawer-close-btn').forEach(btn => {
+            btn.addEventListener('click', closeNav);
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+                closeNav();
+            }
         });
     }
 
