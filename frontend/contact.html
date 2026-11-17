@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Get in touch with NexaLogic IT Solution. Submit our contact form for inquiries, consultations, or technical assistance.">
     <title>NexaLogic IT Solution | Contact Us</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/navbar-footer.css">
-    <link rel="stylesheet" href="assets/css/contact.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=3.5">
+    <link rel="stylesheet" href="assets/css/navbar-footer.css?v=3.5">
+    <link rel="stylesheet" href="assets/css/contact.css?v=3.5">
     <link rel="icon" type="image/svg+xml" href="assets/images/nexalogic%20-15.svg">
 </head>
 <body>
@@ -15,28 +15,63 @@
     <!-- Header & Navigation -->
     <header>
         <nav id="main-nav">
-            <a href="index.html" class="logo-link">
-                <img src="assets/images/nexalogic%20-15.svg" alt="NexaLogic IT Solution Logo" id="nav-logo">
-            </a>
-            <button type="button" class="menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+            <button type="button" class="menu-toggle" id="btnMobileNavToggle" aria-label="Open Navigation Menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+            <a href="index.html" class="logo-link">
+                <img src="assets/images/nexalogic%20-15.svg" alt="NexaLogic IT Solution Logo" id="nav-logo">
+            </a>
             <ul id="nav-menu">
-                <li class="drawer-header-item">
-                    <a href="index.html" class="drawer-logo-link">
-                        <img src="assets/images/nexalogic%20-15.svg" alt="NexaLogic IT Solution Logo" class="drawer-logo">
-                    </a>
-                    <button type="button" class="drawer-close-btn" aria-label="Close Menu">&times;</button>
-                </li>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="contact.html" class="active">Contact</a></li>
             </ul>
+            <a href="contact.html" class="mobile-nav-contact-btn">GET IN TOUCH</a>
         </nav>
     </header>
+
+    <!-- Mobile Side Navigation Drawer (Glaimagain Style) -->
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+        <div class="mobile-nav-header">
+            <div class="mobile-drawer-brand">
+                <img src="assets/images/nexalogic%20-15.svg" alt="NexaLogic IT Solution" class="mobile-drawer-logo">
+                <div class="mobile-drawer-titles">
+                    <span class="mobile-drawer-brand-title">NEXALOGIC</span>
+                    <span class="mobile-drawer-brand-sub">IT SOLUTION</span>
+                </div>
+            </div>
+            <button type="button" class="mobile-nav-close-btn" id="btnMobileNavClose" aria-label="Close Menu">&times;</button>
+        </div>
+        <div class="mobile-nav-body">
+            <div class="mobile-nav-list">
+                <a href="index.html" class="mobile-nav-item">
+                    <span>HOME</span>
+                    <span class="arrow-icon">&#8250;</span>
+                </a>
+                <a href="about.html" class="mobile-nav-item">
+                    <span>ABOUT</span>
+                    <span class="arrow-icon">&#8250;</span>
+                </a>
+                <a href="services.html" class="mobile-nav-item">
+                    <span>SERVICES</span>
+                    <span class="arrow-icon">&#8250;</span>
+                </a>
+                <a href="contact.html" class="mobile-nav-item active">
+                    <span>CONTACT</span>
+                    <span class="arrow-icon">&#8250;</span>
+                </a>
+            </div>
+        </div>
+        <div class="mobile-nav-footer">
+            <a href="contact.html" class="mobile-drawer-cta">
+                <span>GET IN TOUCH</span>
+            </a>
+        </div>
+    </div>
 
     <!-- Main Content Workspace -->
     <main>
@@ -179,6 +214,6 @@
         </div>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js?v=3.5"></script>
 </body>
 </html>

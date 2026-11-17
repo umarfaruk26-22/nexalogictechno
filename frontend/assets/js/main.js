@@ -7,85 +7,67 @@ const API_BASE_URL = window.location.origin.includes('localhost') || window.loca
 
 document.addEventListener('DOMContentLoaded', () => {
     /* -------------------------------------
-       1. Mobile Navigation Toggle & Left Drawer
+       1. Mobile Side Navigation Drawer (Glaimagain Style)
     ------------------------------------- */
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.getElementById('nav-menu');
+    const navToggleBtn = document.getElementById('btnMobileNavToggle') || document.querySelector('.menu-toggle');
+    const navCloseBtn = document.getElementById('btnMobileNavClose') || document.querySelector('.mobile-nav-close-btn');
+    const navDrawer = document.getElementById('mobileNavDrawer') || document.querySelector('.mobile-nav-drawer');
+    const navBackdrop = document.getElementById('mobileNavBackdrop') || document.querySelector('.mobile-nav-backdrop');
 
-    // Create backdrop if not already present
-    let backdrop = document.querySelector('.nav-backdrop');
-    if (!backdrop) {
-        backdrop = document.createElement('div');
-        backdrop.className = 'nav-backdrop';
-        document.body.appendChild(backdrop);
-    }
-
-    // Add drawer header with logo and close button inside navMenu if not already present
-    if (navMenu && !navMenu.querySelector('.drawer-header-item')) {
-        const headerItem = document.createElement('li');
-        headerItem.className = 'drawer-header-item';
-        headerItem.innerHTML = `
-            <a href="index.html" class="drawer-logo-link">
-                <img src="assets/images/nexalogic%20-15.svg" alt="NexaLogic IT Solution Logo" class="drawer-logo">
-            </a>
-            <button type="button" class="drawer-close-btn" aria-label="Close Menu">&times;</button>
-        `;
-        navMenu.insertBefore(headerItem, navMenu.firstChild);
-    }
-
-    function closeNav() {
-        if (menuToggle && navMenu) {
-            menuToggle.setAttribute('aria-expanded', 'false');
-            navMenu.classList.remove('open');
-            menuToggle.classList.remove('open');
-            if (backdrop) backdrop.classList.remove('open');
-            document.body.style.overflow = '';
-        }
-    }
-
-    function openNav() {
-        if (menuToggle && navMenu) {
-            menuToggle.setAttribute('aria-expanded', 'true');
-            navMenu.classList.add('open');
-            menuToggle.classList.add('open');
-            if (backdrop) backdrop.classList.add('open');
+    function openMobileNav() {
+        if (navDrawer && navBackdrop) {
+            navDrawer.classList.add('active');
+            navBackdrop.classList.add('active');
+            if (navToggleBtn) navToggleBtn.classList.add('open');
             document.body.style.overflow = 'hidden';
         }
     }
 
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (navMenu.classList.contains('open')) {
-                closeNav();
-            } else {
-                openNav();
-            }
-        });
-
-        if (backdrop) {
-            backdrop.addEventListener('click', closeNav);
+    function closeMobileNav() {
+        if (navDrawer && navBackdrop) {
+            navDrawer.classList.remove('active');
+            navBackdrop.classList.remove('active');
+            if (navToggleBtn) navToggleBtn.classList.remove('open');
+            document.body.style.overflow = '';
         }
+    }
 
-        // Close on clicking any navigation link
-        navMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                closeNav();
-            });
-        });
-
-        // Close on drawer close button
-        navMenu.querySelectorAll('.drawer-close-btn').forEach(btn => {
-            btn.addEventListener('click', closeNav);
-        });
-
-        // Close on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && navMenu.classList.contains('open')) {
-                closeNav();
+    if (navToggleBtn) {
+        navToggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (navDrawer && navDrawer.classList.contains('active')) {
+                closeMobileNav();
+            } else {
+                openMobileNav();
             }
         });
     }
+
+    if (navCloseBtn) {
+        navCloseBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeMobileNav();
+        });
+    }
+
+    if (navBackdrop) {
+        navBackdrop.addEventListener('click', closeMobileNav);
+    }
+
+    if (navDrawer) {
+        navDrawer.querySelectorAll('.mobile-nav-item, .mobile-drawer-cta').forEach(link => {
+            link.addEventListener('click', () => {
+                closeMobileNav();
+            });
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navDrawer && navDrawer.classList.contains('active')) {
+            closeMobileNav();
+        }
+    });
 
     /* -------------------------------------
        2. Header Scroll Effect
