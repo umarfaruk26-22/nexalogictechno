@@ -200,3 +200,43 @@ img {
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
+
+/* Page Hero Banner for Inner Pages */
+.page-hero {
+    background-color: var(--dark-blue);
+    background-image: linear-gradient(135deg, rgba(10, 25, 47, 0.92) 0%, rgba(13, 110, 253, 0.75) 100%), url('../images/slide1.png');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    padding: 160px 0 75px 0;
+    text-align: center;
+    position: relative;
+}
+
+.page-hero h1 {
+    font-size: 3rem;
+    color: var(--white);
+    margin-bottom: 16px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+.page-hero p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .page-hero {
+        padding: 120px 20px 50px 20px;
+    }
+    .page-hero h1 {
+        font-size: 2.2rem;
+    }
+    .page-hero p {
+        font-size: 1rem;
+    }
+}
