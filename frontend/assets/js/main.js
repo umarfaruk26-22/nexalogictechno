@@ -701,7 +701,7 @@ async function loadCompanySettings() {
         });
 
         // Update Logos
-        document.querySelectorAll('#nav-logo').forEach(img => {
+        document.querySelectorAll('#nav-logo, .mobile-drawer-logo').forEach(img => {
             if (settings.logo_path) img.src = settings.logo_path;
         });
     } catch {
