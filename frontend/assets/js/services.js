@@ -91,6 +91,29 @@ function initServicesListingPage() {
         });
     }
 
+    // Allow tapping anywhere on a service card to open its detail page
+    grid.addEventListener('click', (e) => {
+        const card = e.target.closest('.service-card');
+        if (card && !e.target.closest('a')) {
+            const slug = card.dataset.slug;
+            if (slug) {
+                window.location.href = serviceDetailUrl(slug);
+            }
+        }
+    });
+
+    // Mobile touch-pause interaction
+    let touchResumeTimer = null;
+    grid.addEventListener('touchstart', () => {
+        if (touchResumeTimer) clearTimeout(touchResumeTimer);
+        grid.classList.add('is-paused');
+    }, { passive: true });
+    grid.addEventListener('touchend', () => {
+        touchResumeTimer = setTimeout(() => {
+            grid.classList.remove('is-paused');
+        }, 1200);
+    }, { passive: true });
+
     const renderGrid = () => {
         if (!currentServices.length) {
             grid.className = 'services-grid grid-1';
